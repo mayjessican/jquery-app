@@ -58,8 +58,8 @@ var pokemonRepository = (function() {
             item.height = details.height;
             item.weight = details.weight;
             //check?
-            // item.types = details.types.map(funtion(pokemon){
-            //   return pokemon.type.name;
+            // item.types = details.types.map(funtion(item){
+            //    return item.type.name;
             // });
             item.types = [];
              for (var i = 0; i < details.types.length; i++){
@@ -105,6 +105,7 @@ var pokemonRepository = (function() {
         modal.append(image);
         modal.append(height);
         modal.append(type);
+        modal.append(abilities);
         $modalContainer.append(modal);
         // Add class to show modal
         $modalContainer.addClass('is-visible');
