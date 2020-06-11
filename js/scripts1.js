@@ -76,13 +76,6 @@ var pokemonRepository = (function() {
         });
     }
 
-    // Function to console.log pokemon details
-    function showDetails(item) {
-        pokemonRepository.loadDetails(item).then(function() {
-          console.log(item);
-          showModal(item);
-        });
-    }
     // Shows modal content
     function showModal(item) {
         var $modalContainer = $('#modal-container');
@@ -94,7 +87,8 @@ var pokemonRepository = (function() {
         var name = $('.modal-title').text(item.name);
         var height = $('<p class="pokemon-height"></p>').text("Height: " + item.height + "m");
         var type = $('<p class="pokemon-type"></p>').text("Type: " + item.types + ".");
-        var image = $('<img class="pokemon-picture">');
+        var image = $('<img class="pokemon-image">');
+        var abilities = $('<p class="pokemon-abilities"></p>').text("Abilities: " + item.abilities);
         image.attr("src", item.imageUrl);
   
         if (modal.children().length) {
@@ -115,6 +109,14 @@ var pokemonRepository = (function() {
         // Add class to show modal
         $modalContainer.addClass('is-visible');
       }
+
+        // Function to console.log pokemon details
+        function showDetails(item) {
+           pokemonRepository.loadDetails(item).then(function() {
+            console.log(item);
+            showModal(item);
+        });
+       }
 
   // hides modal when close button is clicked
   function hideModal() {
@@ -152,7 +154,7 @@ var pokemonRepository = (function() {
     };
   })();
 // Creates a list of pokemon with their name on the button
-pokemonRepository.loadList().then(function(pokemon) {
+pokemonRepository.loadList().then(function() {
     pokemonRepository.getAll().forEach(function(pokemon) {
         console.log(pokemon);
         pokemonRepository.addListItem(pokemon);
