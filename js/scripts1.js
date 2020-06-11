@@ -58,13 +58,13 @@ var pokemonRepository = (function() {
             item.height = details.height;
             item.weight = details.weight;
             //check?
-            //item.types = details.types.map(funtion(pokemon){
-            //  return pokemon.type.name;
-            //});
+            // item.types = details.types.map(funtion(pokemon){
+            //   return pokemon.type.name;
+            // });
             item.types = [];
-            for (var i = 0; i < details.types.length; i++){
-              item.types.push(details.types[i].type.name);
-            }
+             for (var i = 0; i < details.types.length; i++){
+               item.types.push(details.types[i].type.name);
+             }
             item.abilities = [];
             for (var i = 0; i < details.abilities.length; i++){
               item.abilities.push(details.abilities[i].ability.name);
@@ -83,43 +83,45 @@ var pokemonRepository = (function() {
           showModal(item);
         });
     }
-//check
     // Shows modal content
     function showModal(item) {
         var $modalContainer = $('#modal-container');
         //Clears existing content in the modal
         $modalContainer.empty();
         //Adds a div element to the dom
-        var modal = $('div class="modal"></div>');
+        var modal = $('.modal-body')
+        //div class="modal"></div>');
+        var name = $('.modal-title').text(item.name);
+
         //Creates closing button
         var closeButtonElement = $('<button class="modal-close">Close</button>');
         //Event listener to close the modal when clicked
         closeButtonElement.on('click', hideModal);
         //Adds pokemon name
         var nameElement = $('<h1>' + item.name + '</h1>');
-    // creating img in modal content
-    var imageElement = $('<img class="modal-img">');
-    imageElement.attr('src', item.imageUrl);
-    //creating element for height in modal content
-    var heightElement = $('<p>' + 'height : ' + item.height + 'm' + '</p>');
-    //creating element for weight in modal content
-    var weightElement = $('<p>' + 'weight : ' + item.weight + 'kg' + '</p>');
-    //creating element for type in modal content
-    var typesElement = $('<p>' + 'types : ' + item.types + '</p>');
-    //creating element for abilities in modal content
-    var abilitiesElement = $('<p>' + 'abilities : ' + item.abilities + '</p>');
-    // Append modal content to webpage
-    modal.append(closeButtonElement);
-    modal.append(nameElement);
-    modal.append(imageElement);
-    modal.append(heightElement);
-    modal.append(weightElement);
-    modal.append(typesElement);
-    modal.append(abilitiesElement);
-    $modalContainer.append(modal);
-    // Add class to show modal
-    $modalContainer.addClass('is-visible');
-  }
+        // creating img in modal content
+        var imageElement = $('<img class="modal-img">');
+        imageElement.attr('src', item.imageUrl);
+        //creating element for height in modal content
+        var heightElement = $('<p>' + 'height : ' + item.height + 'm' + '</p>');
+        //creating element for weight in modal content
+        var weightElement = $('<p>' + 'weight : ' + item.weight + 'kg' + '</p>');
+        //creating element for type in modal content
+        var typesElement = $('<p>' + 'types : ' + item.types + '</p>');
+        //creating element for abilities in modal content
+        var abilitiesElement = $('<p>' + 'abilities : ' + item.abilities + '</p>');
+        // Append modal content to webpage
+        modal.append(closeButtonElement);
+        modal.append(nameElement);
+        modal.append(imageElement);
+        modal.append(heightElement);
+        modal.append(weightElement);
+        modal.append(typesElement);
+        modal.append(abilitiesElement);
+        $modalContainer.append(modal);
+        // Add class to show modal
+        $modalContainer.addClass('is-visible');
+      }
 
   // hides modal when close button is clicked
   function hideModal() {
