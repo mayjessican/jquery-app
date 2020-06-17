@@ -3,7 +3,7 @@ var pokemonRepository = (function() {
     //Creates an empty repository
     var repository = [];
     //Creates a variable to access the pokemon API
-    var $apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
     //Function to create a list of items from API
     function addListItem(pokemon) {
@@ -13,6 +13,9 @@ var pokemonRepository = (function() {
         var $listItem = $('<li>');
         //listItem.text(pokemon.name);
         //Assigns a variable to the button
+
+        //BS
+        <button type="button" class="btn btn-primary">Primary</button>
         var $button = $('<button class="my-class">' + pokemon.name + '</button>');
         $listItem.append($button);
         $pokemonList.append($listItem);
@@ -33,7 +36,7 @@ var pokemonRepository = (function() {
 
     //Function to load pokemon list from API
     function loadList() {
-        return $.ajax($apiUrl)
+        return $.ajax(apiUrl)
         .then(function(json) {
           json.results.forEach(function(item) {
             var pokemon = {
@@ -82,32 +85,31 @@ var pokemonRepository = (function() {
         //Clears existing content in the modal
         $modalContainer.empty();
         //Adds a div element to the dom
-        var $modal = $('<div></div>');
-        $modal.addClass('modal');
-        //<div class="modal"></div>');
-        var name = $('<h1 class="modal-title"></p>').text(item.name);
+        var modal = $('.modal-body');
+        //div class="modal"></div>');
+        var name = $('.modal-title').text(item.name);
         var height = $('<p class="pokemon-height"></p>').text("Height: " + item.height + "m");
         var type = $('<p class="pokemon-type"></p>').text("Type: " + item.types);
         var image = $('<img class="pokemon-image">');
         var abilities = $('<p class="pokemon-abilities"></p>').text("Abilities: " + item.abilities);
         image.attr("src", item.imageUrl);
   
-        //if (modal.children().length) {
-        //  modal.children().remove();
-        //}
+        if (modal.children().length) {
+          modal.children().remove();
+        }
 
         //Creates closing button
         var closeButtonElement = $('<button class="modal-close">Close</button>');
         //Event listener to close the modal when clicked
         closeButtonElement.on('click', hideModal);
         // Append modal content to webpage
-        $modal.append(closeButtonElement);
-        $modal.append(name);
-        $modal.append(image);
-        $modal.append(height);
-        $modal.append(type);
-        $modal.append(abilities);
-        $modalContainer.append($modal);
+        modal.append(closeButtonElement);
+        modal.append(name);
+        modal.append(image);
+        modal.append(height);
+        modal.append(type);
+        modal.append(abilities);
+        $modalContainer.append(modal);
         // Add class to show modal
         $modalContainer.addClass('is-visible');
       }
