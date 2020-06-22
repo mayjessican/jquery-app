@@ -124,6 +124,7 @@ var pokemonRepository = (function() {
   function hideModal() {
     var $modalContainer = $('#modal-container');
     $modalContainer.removeClass('is-visible');
+    console.log('anything');
   }
 
   // Hides model when ESC is clicked
