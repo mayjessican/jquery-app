@@ -11,9 +11,8 @@ var pokemonRepository = (function() {
         var $pokemonList = $('.pokemon-list');
         //Assigns a variable to the list item
         var $listItem = $('<li>');
-        //listItem.text(pokemon.name);
         //Assigns a variable to the button
-        var $button = $('<button class="my-class">' + pokemon.name + '</button>');
+        var $button = $('<button type = "button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal">' + pokemon.name + '</button>');
         $listItem.append($button);
         $pokemonList.append($listItem);
         $button.on('click', function(event) {
@@ -74,38 +73,11 @@ var pokemonRepository = (function() {
 
     // Shows modal content
     function showModal(item) {
-        var $modalContainer = $('#modal-container');
-        //Clears existing content in the modal
-        $modalContainer.empty();
-        //Adds a div element to the dom
-        var $modal = $('<div></div>');
-        $modal.addClass('modal');
-        //<div class="modal"></div>');
-        var name = $('<h1 class="modal-title"></p>').text(item.name);
-        var height = $('<p class="pokemon-height"></p>').text("Height: " + item.height + "m");
-        var type = $('<p class="pokemon-type"></p>').text("Type: " + item.types);
-        var image = $('<img class="pokemon-image">');
-        var abilities = $('<p class="pokemon-abilities"></p>').text("Abilities: " + item.abilities);
-        image.attr("src", item.imageUrl);
-  
-        //if (modal.children().length) {
-        //  modal.children().remove();
-        //}
-
-        //Creates closing button
-        var closeButtonElement = $('<button class="modal-close">Close</button>');
-        //Event listener to close the modal when clicked
-        closeButtonElement.on('click', hideModal);
-        // Append modal content to webpage
-        $modal.append(closeButtonElement);
-        $modal.append(name);
-        $modal.append(image);
-        $modal.append(height);
-        $modal.append(type);
-        $modal.append(abilities);
-        $modalContainer.append($modal);
-        // Add class to show modal
-        $modalContainer.addClass('is-visible');
+        $('.modal-title').text(item.name);
+        $('.height').text("Height: " + item.height + "m");
+        $('.type').text("Type: " + item.types);
+        $('.image').attr("src", item.imageUrl);
+        $('.abilities').text("Abilities: " + item.abilities);
       }
 
         // Function to console.log pokemon details
@@ -116,37 +88,11 @@ var pokemonRepository = (function() {
         });
        }
 
-  // hides modal when close button is clicked
-  function hideModal() {
-    var $modalContainer = $('#modal-container');
-    $modalContainer.removeClass('is-visible');
-    console.log('anything');
-  }
-
-  // Hides model when ESC is clicked
-  jQuery(window).on('keydown', e => {
-    var $modalContainer = $('#modal-container');
-    if (e.key === 'Escape' && $modalContainer.hasClass('is-visible')) {
-      hideModal();
-    }
-  });
-
-  // Hides modal if clicked outside of it
-  var $modalContainer = document.querySelector('#modal-container');
-  $modalContainer.addEventListener('click', e => {
-    var target = e.target;
-    if (target === $modalContainer) {
-      hideModal();
-    }
-  });
-
     // Returns the values that can be accessed outside of the IIFE
     return {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
-        showModal: showModal,
-        hideModal: hideModal,
         loadList: loadList,
         loadDetails: loadDetails,
         showDetails: showDetails
