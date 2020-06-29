@@ -132,7 +132,7 @@ button:focus {
   height: auto;
 }
 
-.modal-close {
+/* .modal-close {
   letter-spacing: 1px;
   background-color: blue;
   border-radius: 6px;
@@ -144,8 +144,8 @@ button:focus {
   padding: 6px 6px;
   text-decoration: none;
   float: right;
-}
+} */
 
-.modal-close:hover {
+/* .modal-close:hover {
   background-color: lightblue;
-}
+} */
