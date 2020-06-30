@@ -4,18 +4,10 @@ body {
   padding-top: 50px;
 }
 
-button:hover,
-button:focus {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-#myDiv {
-  padding: 0
-}
-
-.my-class:hover {
-  background-color: #5187eb;
+.btn-outline-dark {
+  background-color: lightblue;
+  border-color: darkblue;
+  border-radius:10px;
 }
 
 .pokemon-list li {
@@ -24,5 +16,11 @@ button:focus {
 
 .modal-dialog {
   font-family: Montserrat, sans-serif;
+  text-align: center;
+}
+
+.modal-image {
+  width: 200px;
+  height: auto;
   text-align: center
 }

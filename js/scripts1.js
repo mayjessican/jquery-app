@@ -94,11 +94,13 @@ var pokemonRepository = (function() {
         getAll: getAll,
         addListItem: addListItem,
         loadList: loadList,
+        showModal: showModal,
         loadDetails: loadDetails,
         showDetails: showDetails
     };
   })();
-// Creates a list of pokemon with their name on the button
+
+  // Creates a list of pokemon with their name on the button
 pokemonRepository.loadList().then(function() {
     pokemonRepository.getAll().forEach(function(pokemon) {
         console.log(pokemon);
